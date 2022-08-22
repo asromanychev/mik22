@@ -33,6 +33,8 @@ gem "omniauth"
 gem 'omniauth-vkontakte'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 
+gem "simple_form", "~> 5.1.0"
+
 group :development do
   gem "web-console"
   gem 'capistrano'
