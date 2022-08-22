@@ -1,0 +1,5 @@
+<div class="col py-1">
+  <% photo_header = "#{render partial: 'photos/photo_header', locals: { photo: photo }}"%>
+  <%= link_to image_tag(photo.photo_image.variant(resize: "200x200")), photo.photo_image.url,
+              data: { lightbox: 'event-photos', title: photo_header } %>
+</div>

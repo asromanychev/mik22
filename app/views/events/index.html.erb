@@ -1,0 +1,11 @@
+<h1><%= t('.events') %></h1>
+
+<div class="buffer-both">
+  <% if policy(:event).new? %>
+    <%= link_to t('.new'), new_event_path, class: 'btn btn-success' %>
+  <% end %>
+</div>
+
+<div class="row buffer-bottom">
+  <%= render partial: 'events/event', collection: @events %>
+</div>

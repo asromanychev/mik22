@@ -1,0 +1,215 @@
+ru:
+  global:
+    flash:
+      not_authorized: Вы не авторизованы для выполнения этого действия
+  or: 'или'
+  delete_event: Удалить событие
+  layouts:
+    application:
+      profile: 'Профиль'
+      exit: 'Выход'
+      enter: 'Войти'
+      sign_up: 'Зарегистрироваться'
+  home:
+    welcome: 'Welcome, this is the home page'
+  partials:
+    form_errors:
+      form_errors: 'В вашей форме %{count} ошибок'
+  events:
+    show:
+      invite: Зовет
+      will_go: Пойдут
+      i_am_ready: 'Я пойду'
+      edit: 'Изменить'
+      destroy: 'Удалить'
+      destroy_confirm: 'Вы уверены, что хотите удалить событие?'
+    form:
+      save: 'Сохранить'
+      back: 'Вернуться'
+    edit:
+      event: 'Редактирование события'
+    index:
+      events: 'События'
+      new: 'Создать событие'
+    new:
+      event: 'Новое событие'
+    password_form:
+      access: 'Доступ только по пин-коду'
+      pin_code: 'Пин-код'
+      root: 'На главную'
+      pincode: Введите пин-код для просмотра мероприятия
+      send: Отправить
+      pincode_title: Пин-код
+
+  devise:
+    log_in: 'Войти'
+    sign_up: 'Зарегистрироваться'
+    characters_minimum: 
+      one: Минимум %{count} символ
+      few: Минимум %{count} символа
+      many: Минимум %{count} символов
+
+    forgot: 'Забыли пароль'
+    send_me_password: 'Пришлите мне инструкции по сбросу пароля'
+    change_password: 'Изменение пароля'
+    change_my_password: 'Изменить пароль'
+    confirm_new_password: 'Подтвердить новый пароль'
+    mailer:
+      confirm_my_account: 'Подтвердить мой аккаунт'
+      reset_password_instructions:
+        hello: 'Привет'
+        reset_password_text: 'Кто-то запросил ссылку для смены пароля. Вы можете сделать это по ссылке ниже.'
+        change_password: 'Сменить пароль'
+        warning_change_password: 'Если вы этого не запрашивали, проигнорируйте это письмо.'
+        information_change_password: 'Ваш пароль не изменится, пока вы не перейдете по ссылке выше и не создадите новый.'
+    passwords:
+      edit:
+        change_password: 'Изменить пароль'
+        minimum_password_length: 'Минимум 6 символов'
+        confirm_new_password: 'Подтвердить новый пароль'
+
+    registrations:
+      edit:
+        user: пользователя
+        sign_up: Сохранить
+        back: Назад
+        submit_cancel: Подтвердить удаление
+        current: В настоящее время ожидается подтверждение для
+        leave: оставьте пустым, если не хотите его менять
+        need: нам нужен ваш текущий пароль, чтобы подтвердить ваши изменения
+        destroy_confirm: Вы уверены, что хотите удалить пользователя?
+
+  errors:
+    messages:
+      not_saved:
+        one: 'Cохранение не удалось из-за %{count} ошибки:'
+        few: 'Сохранение не удалось из-за %{count} ошибок:'
+        many: 'Сохранение не удалось из-за %{count} ошибок:'
+
+  photos:
+    form:
+      upload: 'Загрузить'
+    edit:
+      photo: 'Редактировать фото'
+      show_this_photo: 'Показать эту фотографию'
+      back_to_photo: 'Назад к фотографии'
+    photo:
+      add: 'Добавил'
+      added: 'Добавил'
+      destroy_confirm: 'Вы действительно хотите удалить фотографию?'
+    index:
+      photos: 'Фотографии'
+      show_this_photo: 'Показать фотографию'
+      new_photo: 'Новое фото'
+    new:
+      photo: 'Новое фотo'
+      back_to_photos: 'Вернуться'
+    show:
+      edit_this_photo: 'Редактировать фотографию'
+      back_to_photos: 'Назад к фотографии'
+      destroy_this_photo: 'Удалить фотографию'
+  comments:
+    comment:
+      destroy_confirm: 'Вы уверены, что хотите удалить этот комменатрий?'
+    form:
+      send: 'Отправить'
+  users:
+    form:
+      save: 'Сохранить'
+      back: 'Вернуться'
+    edit:
+      user: 'Редактировать'
+      change_password: 'Сменить пароль'
+    show:
+      change_password: 'Сменить пароль'
+      organized: Организовал
+      not_organized: Пользователь пока не организовал ни одного события
+
+  activerecord:
+    models:
+      user: 'Пользователь'
+      event: 'Событие'
+      subscription: 'Подписка'
+      comment: 'Комментарий'
+      photo: 'Фотография'
+
+    attributes:
+      user:
+        email: 'Email'
+        name: 'Имя'
+        avatar: 'Аватарка'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+      event:
+        title: 'Название'
+        address: 'Место проведения'
+        datetime: 'Дата и время'
+        description: 'Описание'
+        pincode: 'Пинкод доступа'
+      comment:
+        user_name: 'Ваше имя'
+        body: 'Комментарий'
+      subscription:
+        user_name: 'Ваше имя'
+        user_email: 'Ваш email'
+      photo:
+        photo: 'Фотография'
+
+  controllers:
+    events:
+      created: 'Вы создали новое мероприятие'
+      updated: 'Вы обновили мероприятие'
+      destroyed: 'Вы удалили мероприятие :('
+      wrong_pincode: 'Неверный пинкод!'
+    users:
+      updated: 'Вы обновили свой профиль'
+    comments:
+      destroyed: 'Комментарий удален'
+      created: 'Ваш комментарий добавлен'
+      error: 'Ошибка с комментарием'
+    subscriptions:
+      created: 'Вы подписаны на это событие'
+      destroyed: 'Участник отписан'
+      error: 'Подписка/отписка не сработала'
+    photos:
+      error: 'Что-то не так с фоткой'
+      created: 'Вы добавили фотографию к событию'
+      destroyed: 'Вы удалили фотку'
+
+  views:
+    photos:
+      photo_image: 'Добавить фотографию к событию'
+
+  app:
+    name: 'Шашлыки'
+    company: 'Хороший программист'
+
+
+  subscriptions:
+    subscription:
+      destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
+    form:
+      new: Подписаться
+
+  event_mailer:
+    comment:
+      subject: 'Новый комментарий @%{event}'
+      title: 'Новый комментарий'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'
+    subscription:
+      subject: 'Новая подписка на %{event}'
+      title: 'Новая подписка'
+      name: 'Имя'
+      email: 'Email'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'
+    photo:
+      subject: 'Новая фотография @%{event}'
+      title: 'Новая фотография'
+      author: 'Автор'
+      event: 'Событие'
