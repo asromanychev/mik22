@@ -9,6 +9,7 @@ gem "puma", "~> 5.0"
 gem "importmap-rails"
 gem "jsbundling-rails"
 gem "turbo-rails", '~> 1.0.0'
+gem "sassc-rails"
 gem "stimulus-rails"
 gem "cssbundling-rails"
 gem "jbuilder"
@@ -125,7 +126,3 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-
-
-
