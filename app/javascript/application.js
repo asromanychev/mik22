@@ -1,10 +1,10 @@
 // Entry point for the build script in your package.json
 import "@hotwired/turbo-rails"
 import "./controllers"
-import * as bootstrap from "bootstrap"
-import 'lightbox2'
+import * as bootstrap from "./bootstrap"
+import './lightbox2'
 
-let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))  
-let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {  
-  return new bootstrap.Popover(popoverTriggerEl)  
+let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
 })

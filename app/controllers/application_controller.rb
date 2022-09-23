@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  # @page_title       = 'Member Login'
+  # @page_description = 'Member login page.'
+  # @page_keywords    = 'Site, Login, Members'
   include Authorization
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

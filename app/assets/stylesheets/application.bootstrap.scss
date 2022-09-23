@@ -1,6 +1,6 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
-@import 'lightbox2/src/css/lightbox';
+//@import 'lightbox2/src/css/lightbox';
 
 
 // Entry point for your Sass build
@@ -27,7 +27,6 @@
 @import "actiontext";
 @import "admin";
 @import "frontend";
-
 
 .buffer-top {
   margin-top: 20px;
