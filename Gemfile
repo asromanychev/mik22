@@ -9,7 +9,7 @@ gem "puma", "~> 5.0"
 gem "importmap-rails"
 gem "jsbundling-rails"
 gem "turbo-rails", '~> 1.0.0'
-gem "sassc-rails"
+gem "sass-rails"
 gem "stimulus-rails"
 gem "cssbundling-rails"
 gem "jbuilder"
@@ -45,7 +45,6 @@ gem "whenever", "~> 1.0", require: false
 gem "awesome_print", "~> 1.9"
 
 gem "rails_admin", "~> 3.0.beta2"
-gem "sassc-rails"
 
 gem "pghero", "~> 2.8"
 
