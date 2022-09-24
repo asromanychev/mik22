@@ -434,8 +434,6 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -571,7 +569,7 @@ DEPENDENCIES
   remixicon (~> 1.0)
   responders!
   rspec-rails
-  sass-rails
+  sassc-rails
   selenium-webdriver
   sentry-rails
   sentry-ruby
@@ -579,7 +577,6 @@ DEPENDENCIES
   shoulda-matchers
   sidekiq (~> 6.3)
   simple_form (~> 5.1.0)
-  sprockets-rails
   stimulus-rails
   terser (~> 1.1)
   tinymce-rails (~> 5.10)

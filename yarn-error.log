@@ -2,7 +2,7 @@ Arguments:
   /home/anri/.nvm/versions/node/v12.22.7/bin/node /home/anri/.yarn/bin/yarn.js build --watch
 
 PATH: 
-  /home/anri/.rvm/gems/ruby-3.0.3/bin:/home/anri/.rvm/gems/ruby-3.0.3@global/bin:/usr/share/rvm/rubies/ruby-3.0.3/bin:/usr/share/rvm/bin:/home/anri/.nvm/versions/node/v12.22.7/bin:/home/anri/.yarn/bin:/home/anri/.config/yarn/global/node_modules/.bin:/home/anri/.autojump/bin:/home/anri/.local/bin:/usr/java/latest/bin:/home/anri/.npm-global/bin:/home/anri/bin:/usr/local/bin:/home/anri/.nvm/versions/node/v12.22.7/bin:/home/anri/.yarn/bin:/home/anri/.config/yarn/global/node_modules/.bin:/home/anri/.autojump/bin:/home/anri/.local/bin:/usr/java/latest/bin:/home/anri/.npm-global/bin:/home/anri/bin:/usr/local/bin:/home/anri/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  /home/anri/.rvm/gems/ruby-3.0.3/bin:/home/anri/.rvm/gems/ruby-3.0.3@global/bin:/usr/share/rvm/rubies/ruby-3.0.3/bin:/usr/share/rvm/bin:/home/anri/.nvm/versions/node/v12.22.7/bin:/home/anri/.yarn/bin:/home/anri/.config/yarn/global/node_modules/.bin:/home/anri/.autojump/bin:/home/anri/.local/bin:/usr/java/latest/bin:/home/anri/.npm-global/bin:/home/anri/bin:/usr/local/bin:/home/anri/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
 Yarn version: 
   1.22.5
