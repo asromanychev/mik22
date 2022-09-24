@@ -1,6 +1,5 @@
 //= link_tree ../images
 //= link_tree ../builds .js
-//= link_tree ../../../vendor/javascript .js
 //= link controllers/admin/search_bar_controller.js
 //= link controllers/admin/sidebar_controller.js
 //= link controllers/charts/echarts_controller.js
