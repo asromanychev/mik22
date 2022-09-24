@@ -8,6 +8,7 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 gem "importmap-rails"
 gem "jsbundling-rails"
+gem "hotwire-livereload", "~> 1.1"
 gem "turbo-rails", '~> 1.0.0'
 gem "sassc-rails"
 gem "stimulus-rails"
