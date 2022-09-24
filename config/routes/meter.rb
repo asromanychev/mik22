@@ -1,0 +1,10 @@
+namespace :meter do
+  root 'dashboard#show'
+  get 'components/alert'
+  get "components/tabs"
+  get 'tables/general'
+  get "tables/data"
+  get 'charts/chartjs'
+  get 'charts/apexcharts'
+  get 'charts/echarts'
+end

@@ -1,6 +1,10 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  # meter ####
+  draw(:meter)
+
+  ############
   mount RailsAdmin::Engine => '/rails_admin', as: 'rails_admin'
   mount Sidekiq::Web => '/sidekiq'
   mount PgHero::Engine, at: 'pghero'

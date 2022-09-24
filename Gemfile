@@ -86,8 +86,6 @@ gem "quill-editor-rails"
 
 gem 'activestorage-aliyun', '~> 1.1'
 
-gem "hotwire-livereload", "~> 1.1", :group => :development
-
 gem "sentry-ruby"
 gem "sentry-rails"
 gem "sentry-sidekiq"
