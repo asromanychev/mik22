@@ -13,7 +13,6 @@
     <%= stylesheet_link_tag "users", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "events", "data-turbo-track": "reload" %>
 
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= javascript_importmap_tags %>
     <%= hotwire_livereload_tags %>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=<%= Rails.application.credentials.dig(:yandex_map, :api_key) %>" type="text/javascript"></script>
@@ -24,11 +23,6 @@
     <![endif]-->
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
-
-
-
-
 
     <%= stylesheet_link_tag "frontend", "data-turbo-track": "reload" %>
     <%- javascript_include_tag "frontend", "data-turbo-track": "reload", defer: true %>
