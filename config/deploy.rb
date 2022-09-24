@@ -22,23 +22,6 @@ namespace :deploy do
   # task :restart do
   # end
 
-  namespace :check do
-    before :linked_files, :set_master_key do
-      on roles(:app), in: :sequence, wait: 10 do
-        unless test("[ -f #{shared_path}/config/master.key ]")
-          upload! 'config/master.key', "#{shared_path}/config/master.key"
-        end
-      end
-    end
-    before :linked_files, :set_env_file do
-      on roles(:app), in: :sequence, wait: 10 do
-        unless test("[ -f #{shared_path}/.env ]")
-          upload! '.env', "#{shared_path}/.env"
-        end
-      end
-    end
-  end
-
   namespace :assets do
     Rake::Task['deploy:assets:precompile'].clear_actions
 

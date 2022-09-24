@@ -112,8 +112,6 @@ GEM
     apexcharts (0.1.11)
       dry-schema (~> 1.5)
       smart_kv (~> 0.2.8)
-    autoprefixer-rails (10.4.7.0)
-      execjs (~> 2)
     awesome_print (1.9.2)
     aws-eventstream (1.2.0)
     aws-partitions (1.615.0)
@@ -526,7 +524,6 @@ PLATFORMS
 DEPENDENCIES
   activestorage-aliyun (~> 1.1)
   apexcharts (~> 0.1.11)
-  autoprefixer-rails
   awesome_print (~> 1.9)
   aws-sdk-s3
   bootsnap
