@@ -15,12 +15,11 @@
     "esbuild": "^0.15.9",
     "jquery": "^3.6.0",
     "lightbox2": "^2.11.3",
-    "sass": "^1.53.0",
+    "sass": "^1.55.0",
     "simple-datatables": "^3.2.0",
     "simpledotcss": "^2.0.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
-    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
   }
 }

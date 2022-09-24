@@ -37,3 +37,4 @@
 /public/fonts/*
 !/public/fonts/.keep
 /package-lock.json
+yarn-error.log

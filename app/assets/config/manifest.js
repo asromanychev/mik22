@@ -17,3 +17,5 @@
 //= link frontend.css
 //= link admin.css
 //= link admin.js
+//= link application.css
+
