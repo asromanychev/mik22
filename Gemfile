@@ -2,6 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.3"
+gem 'sassc-rails'
 gem "rails", "~> 7.0.2"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
@@ -9,15 +10,15 @@ gem "importmap-rails"
 gem "jsbundling-rails"
 gem "hotwire-livereload", "~> 1.1"
 gem "turbo-rails", '~> 1.0.0'
-gem "sassc-rails"
+
 gem "stimulus-rails"
 gem "cssbundling-rails"
 gem "jbuilder"
-
+gem "sprockets-rails"
 gem "redis", "~> 4.0"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
-gem "font-awesome-rails"
+# gem "font-awesome-rails"
 gem "letter_opener", group: :development
 
 gem 'devise-i18n'
