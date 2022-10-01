@@ -1,0 +1,265 @@
+<section class="section dashboard">
+  <div class="row">
+
+    <!-- Left side columns -->
+    <div class="col-lg-12">
+      <div class="row">
+
+        <!-- Sales Card -->
+        <div class="col-xxl-4 col-md-6">
+          <div class="card info-card sales-card">
+
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Sales <span>| Today</span></h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-cart"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>145</h6>
+                  <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- End Sales Card -->
+
+        <!-- Revenue Card -->
+        <div class="col-xxl-4 col-md-6">
+          <div class="card info-card revenue-card">
+
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Revenue <span>| This Month</span></h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-currency-dollar"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>$3,264</h6>
+                  <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- End Revenue Card -->
+
+        <!-- Customers Card -->
+        <div class="col-xxl-4 col-xl-12">
+
+          <div class="card info-card customers-card">
+
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Customers <span>| This Year</span></h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-people"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>1244</h6>
+                  <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- End Customers Card -->
+
+        <!-- Recent Sales -->
+        <%= render 'meter/vah/meterings/data' %> <!-- End Recent Sales -->
+
+        <!-- Reports -->
+        <div class="col-12">
+          <div class="card">
+
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Line Chart</h5>
+
+              <!-- Line Chart -->
+              <div id="lineChart" style="min-height: 400px;" class="echart"></div>
+
+              <script>
+                  const colors = ['#5470C6', '#91CC75', '#EE6666'];
+                  echarts.init(document.querySelector("#lineChart")).setOption({
+                      color: colors,
+                      tooltip: {
+                          trigger: 'axis',
+                          axisPointer: {
+                              type: 'cross'
+                          }
+                      },
+                      grid: {
+                          right: '20%'
+                      },
+                      toolbox: {
+                          feature: {
+                              dataView: { show: true, readOnly: false },
+                              restore: { show: true },
+                              saveAsImage: { show: true }
+                          }
+                      },
+                      legend: {
+                          data: ['Evaporation', 'Precipitation', 'Temperature']
+                      },
+                      xAxis: [
+                          {
+                              type: 'category',
+                              axisTick: {
+                                  alignWithLabel: true
+                              },
+                              // prettier-ignore
+                              data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                          }
+                      ],
+                      yAxis: [
+                          {
+                              type: 'value',
+                              name: 'Evaporation',
+                              position: 'right',
+                              alignTicks: true,
+                              axisLine: {
+                                  show: true,
+                                  lineStyle: {
+                                      color: colors[0]
+                                  }
+                              },
+                              axisLabel: {
+                                  formatter: '{value} ml'
+                              }
+                          },
+                          {
+                              type: 'value',
+                              name: 'Precipitation',
+                              position: 'right',
+                              alignTicks: true,
+                              offset: 80,
+                              axisLine: {
+                                  show: true,
+                                  lineStyle: {
+                                      color: colors[1]
+                                  }
+                              },
+                              axisLabel: {
+                                  formatter: '{value} ml'
+                              }
+                          },
+                          {
+                              type: 'value',
+                              name: '<%= 'темп' %>',
+                              position: 'left',
+                              alignTicks: true,
+                              axisLine: {
+                                  show: true,
+                                  lineStyle: {
+                                      color: colors[2]
+                                  }
+                              },
+                              axisLabel: {
+                                  formatter: '{value} °C'
+                              }
+                          }
+                      ],
+                      series: [
+                          {
+                              name: 'Evaporation',
+                              type: 'bar',
+                              data: [
+                                  2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3
+                              ]
+                          },
+                          {
+                              name: 'Precipitation',
+                              type: 'bar',
+                              yAxisIndex: 1,
+                              data: [
+                                  2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3
+                              ]
+                          },
+                          {
+                              name: 'Temperature',
+                              type: 'line',
+                              yAxisIndex: 2,
+                              data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+                          }
+                      ]
+                  });
+              </script>
+              <!-- End Line Chart -->
+
+            </div>
+
+
+
+
+          </div>
+        </div><!-- End Reports -->
+
+
+
+
+      </div>
+    </div><!-- End Left side columns -->
+
+
+  </div>
+</section>

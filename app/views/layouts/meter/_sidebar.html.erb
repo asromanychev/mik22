@@ -11,6 +11,25 @@
 
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-menu-button-wide"></i><span>Участок Вах</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="components-nav" class="nav-content collapse <%= class_names(show: vah?) %>" data-bs-parent="#sidebar-nav">
+        <li>
+          <%= nav_link meter_vah_meterings_path do %>
+            <i class="bi bi-circle"></i><span>База измерений</span>
+          <% end %>
+        </li>
+        <li>
+          <%= nav_link meter_vah_dashboard_path do %>
+            <i class="bi bi-circle"></i><span>Сводка измерений</span>
+          <% end %>
+        </li>
+      </ul>
+    </li><!-- End VAH Nav -->
+
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
         <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="components-nav" class="nav-content collapse <%= class_names(show: components?) %>" data-bs-parent="#sidebar-nav">
