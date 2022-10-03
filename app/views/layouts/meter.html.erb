@@ -10,14 +10,24 @@
 
     <!-- Google Fonts -->
     <!-- Google Fonts -->
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "admin", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "users", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "events", "data-turbo-track": "reload" %>
+    <%#= stylesheet_link_tag :application, "https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" %>
+    <%= javascript_include_tag :application, "data-turbo-track": "reload", defer: true %>
 
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%#= javascript_include_tag :application, "https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js", "data-turbo-track": "reload", defer: true %>
     <%= javascript_importmap_tags %>
     <%= hotwire_livereload_tags %>
   </head>

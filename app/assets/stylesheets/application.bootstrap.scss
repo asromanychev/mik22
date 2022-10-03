@@ -5,6 +5,8 @@
 @import 'lightbox2/src/css/lightbox';
 @import 'meter';
 
+@import "https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css";
+
 // Entry point for your Sass build
 
 // Mixins
@@ -15,12 +17,12 @@
 @import "config/reset";
 
 // Components
-@import "components/btn";
-@import "components/error_message";
-@import "components/form";
-@import "components/visually_hidden";
-@import "components/quote";
-@import "components/turbo_progress_bar";
+//@import "components/btn";
+//@import "components/error_message";
+//@import "components/form";
+//@import "components/visually_hidden";
+//@import "components/quote";
+//@import "components/turbo_progress_bar";
 
 // Layouts
 @import "layouts/container";
