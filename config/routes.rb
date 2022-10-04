@@ -1,6 +1,11 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :players do
+    collection do
+      get 'list'
+    end
+  end
   # meter ####
   draw(:meter)
 

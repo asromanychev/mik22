@@ -1,0 +1,32 @@
+
+<%= turbo_frame_tag "players", class: "table-responsive" do %>
+
+  <table id="example" class="table table-sm table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col" id="players-name">
+          <%= sort_indicator if params[:column] == "name" %>
+          <%= sort_link(column: "name", label: "Name") %>
+        </th>
+        <th scope="col" id="players-team">
+          <%= sort_indicator if params[:column] == "teams.name" %>
+          <%= sort_link(column: "teams.name", label: "Team") %>
+        </th>
+        <th scope="col" id="players-seasons">
+          <%= sort_indicator if params[:column] == "seasons" %>
+          <%= sort_link(column: "seasons", label: "Seasons") %>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody class="text-gray-700">
+    <% players.each do |player| %>
+      <tr>
+        <td class="text-left py-3 px-6"><%= player.name %></td>
+        <td class="text-left py-3 px-6"><%= player.team.name %></td>
+        <td class="text-left py-3 px-6"><%= player.seasons %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

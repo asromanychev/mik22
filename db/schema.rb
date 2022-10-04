@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_18_083603) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_04_024237) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -87,6 +87,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_083603) do
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
+  create_table "players", force: :cascade do |t|
+    t.string "name"
+    t.bigint "team_id"
+    t.integer "seasons"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_players_on_team_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -109,6 +118,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_083603) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_subscriptions_on_event_id"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -135,6 +150,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_083603) do
   add_foreign_key "events", "users"
   add_foreign_key "photos", "events"
   add_foreign_key "photos", "users"
+  add_foreign_key "players", "teams"
   add_foreign_key "subscriptions", "events"
   add_foreign_key "subscriptions", "users"
 end

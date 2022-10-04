@@ -218,6 +218,8 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (2.23.0)
+      i18n (>= 1.8.11, < 2)
     faraday (2.5.2)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
@@ -539,6 +541,7 @@ DEPENDENCIES
   devise-i18n
   dotenv-rails (~> 2.7)
   factory_bot_rails
+  faker (~> 2.23)
   ffaker (~> 2.20)
   font_awesome5_rails (~> 1.5)
   groupdate (~> 6.0)
