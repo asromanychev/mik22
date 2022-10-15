@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_04_024237) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_15_121919) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -141,6 +141,68 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_024237) do
     t.string "url"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "vah_imports", force: :cascade do |t|
+    t.text "type", null: false
+    t.text "path", null: false
+    t.datetime "started_at", null: false
+    t.datetime "ended_at"
+    t.text "errors"
+    t.boolean "successed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vah_met_sites", force: :cascade do |t|
+    t.bigint "vah_met_id", null: false
+    t.integer "site_number", null: false
+    t.jsonb "frags_values", default: {}, null: false
+    t.string "check_sum", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vah_met_id", "site_number", "check_sum"], name: "index_vah_met_sites_on_vah_met_id_and_site_number_and_check_sum", unique: true
+    t.index ["vah_met_id"], name: "index_vah_met_sites_on_vah_met_id"
+  end
+
+  create_table "vah_mets", force: :cascade do |t|
+    t.bigint "wafer_id"
+    t.bigint "vah_norm_id"
+    t.datetime "datetime"
+    t.string "device"
+    t.string "operator"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vah_norm_id"], name: "index_vah_mets_on_vah_norm_id"
+    t.index ["wafer_id", "datetime", "device"], name: "index_vah_mets_on_wafer_id_and_datetime_and_device", unique: true
+    t.index ["wafer_id"], name: "index_vah_mets_on_wafer_id"
+  end
+
+  create_table "vah_norms", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "is_nors", default: false
+    t.integer "check_md5", null: false
+    t.tsrange "range_date"
+    t.datetime "start_time"
+    t.integer "sites_count", null: false
+    t.integer "frags_count", null: false
+    t.integer "params_count", null: false
+    t.jsonb "frags_params", default: {}, null: false
+    t.string "check_sum", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "is_nors", "check_md5"], name: "index_vah_norms_on_name_and_is_nors_and_check_md5", unique: true
+  end
+
+  create_table "wafers", force: :cascade do |t|
+    t.string "name"
+    t.string "product"
+    t.integer "lot"
+    t.integer "lot_packet"
+    t.integer "lot_order"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
