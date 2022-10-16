@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 class VahMetSite < ApplicationRecord
+  before_save :rebuild_check_sum
+  belongs_to :vah_import_dat, :class_name => 'VahImport::Dat'
   belongs_to :vah_met
 
-  def self.complite_check_sum(frags_values)
-    "#{frags_values.keys.count}_#{arr = []; frags_values.each_pair{|k, v| arr << v.count }; arr.join("_")}"
-  rescue StandardError => e
-    puts 'self.complite_check_sum'
-    puts e
+  def rebuild_check_sum
+    self.check_sum = "#{self.frags_values.keys.count}_#{arr = []; self.frags_values.each_pair{|k, v| arr << v.count }; arr.join("_")}"
   end
 end

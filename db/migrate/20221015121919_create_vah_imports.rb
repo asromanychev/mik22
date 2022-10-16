@@ -5,7 +5,7 @@ class CreateVahImports < ActiveRecord::Migration[7.0]
       t.text :path, null: false
       t.datetime :started_at, null: false
       t.datetime :ended_at
-      t.text :errors
+      t.text :import_errors
       t.boolean :successed, default: false
 
       t.timestamps

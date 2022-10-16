@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_15_121919) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_16_120113) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -143,12 +143,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_121919) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vah_import_dat_line_errors", force: :cascade do |t|
+    t.bigint "vah_import_dat_id"
+    t.integer "line_number", null: false
+    t.text "line", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vah_import_dat_id"], name: "index_vah_import_dat_line_errors_on_vah_import_dat_id"
+  end
+
   create_table "vah_imports", force: :cascade do |t|
     t.text "type", null: false
     t.text "path", null: false
     t.datetime "started_at", null: false
     t.datetime "ended_at"
-    t.text "errors"
+    t.text "import_errors"
     t.boolean "successed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -161,6 +170,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_121919) do
     t.string "check_sum", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "vah_import_dat_id", null: false
+    t.text "line_numbers", default: [], array: true
     t.index ["vah_met_id", "site_number", "check_sum"], name: "index_vah_met_sites_on_vah_met_id_and_site_number_and_check_sum", unique: true
     t.index ["vah_met_id"], name: "index_vah_met_sites_on_vah_met_id"
   end
@@ -173,6 +184,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_121919) do
     t.string "operator"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "met_date"
+    t.string "met_time"
+    t.string "norm_name"
     t.index ["vah_norm_id"], name: "index_vah_mets_on_vah_norm_id"
     t.index ["wafer_id", "datetime", "device"], name: "index_vah_mets_on_wafer_id_and_datetime_and_device", unique: true
     t.index ["wafer_id"], name: "index_vah_mets_on_wafer_id"
@@ -197,10 +211,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_121919) do
   create_table "wafers", force: :cascade do |t|
     t.string "name"
     t.string "product"
-    t.integer "lot"
-    t.integer "lot_packet"
-    t.integer "lot_order"
-    t.integer "number"
+    t.string "lot"
+    t.string "lot_packet"
+    t.string "lot_order"
+    t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
