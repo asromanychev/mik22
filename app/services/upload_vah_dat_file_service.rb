@@ -22,7 +22,7 @@ class UploadVahDatFileService
 
   def initialize(path)
     @path = path
-    @vah_import_dat = VahImport::Dat.create!(path: path, started_at: Time.now)
+    @vah_import_dat = VahImport::Dat.find_by(path: path) || VahImport::Dat.create!(path: path, started_at: Time.now)
     @line_count = 0
   rescue ActiveRecord::RecordInvalid => e
     puts e
@@ -39,7 +39,7 @@ class UploadVahDatFileService
     return unless file.present?
 
     file.each do |line|
-      upload_line(line)
+      upload_line(line.chomp)
     end
     vah_import_dat.update(ended_at: Time.now)
     vah_import_dat.update(successed: true) unless vah_import_dat.import_errors
@@ -56,8 +56,8 @@ class UploadVahDatFileService
     matched = match_pattern.match(line)
 
     if matched.nil?
-      VahImportDatLineError.create(vah_import_dat: vah_import_dat, line_number: @line_count, line: line)
-      puts "Error line '#{line}' in #{@vah_import_dat.path}:#{@line_count}"
+      VahImportDatLineError.find_or_create_by(vah_import_dat: vah_import_dat, line_number: @line_count, line: line)
+      puts "[#{@line_count}] Error line '#{line}'"
       return
     end
 
@@ -72,23 +72,28 @@ class UploadVahDatFileService
     met_time = matched[9] # 9.	09:42
     _device_name = matched[10] # 10. M_IAK
     norm_name = matched[11] # 11.	KM354
-    met_line = matched[12]  # 12.	107.9482,6.9215,18.5502,31.9302,25.2399,22.9831,31.5961,116.3564,233.9124,2.5314,6.9238,18.2342,32.1405,25.2636,23.1229,31.8232,327.4253,-21.5093,-30.8313,-29.3267,217.0175,
+    met_line = matched[12].chomp  # 12.	107.9482,6.9215,18.5502,31.9302,25.2399,22.9831,31.5961,116.3564,233.9124,2.5314,6.9238,18.2342,32.1405,25.2636,23.1229,31.8232,327.4253,-21.5093,-30.8313,-29.3267,217.0175,
 
     wafer = Wafer.find_or_create_by(product: product_name, lot: lot, number: wafer_number)
     met = VahMet.find_or_create_by(wafer: wafer, met_date: met_date, met_time: met_time, norm_name: norm_name, device: device, operator: operator)
     # мы можем как то узнать, что VahMet полностью собралось. что все site записаны и пометить флагом complite ?
     # измерения надо найти из какого
     site = VahMetSite.find_or_create_by(vah_met: met, site_number: site_number, vah_import_dat: vah_import_dat)
-    site.frags_values[frag_number] = met_line.chomp.split(',').compact
+
+    if site.frags_values[frag_number].present?
+      puts "[#{@line_count}] Already in VahMetSite##{site.id} '#{line}'"
+      # puts "Line in VahMetSite => #{site.frags_values[frag_number]}"
+      return
+    end
+    site.frags_values[frag_number] = met_line.split(',').compact
     site.line_numbers << @line_count
-    # если такая строка уже была в другом файле
-    # надо ли сохранять куда то файл и номер строки от куда мы это занесли в базу ???
 
     site.save
-    puts "Success line #{@line_count} with Wafer #{wafer.name} and id = #{wafer.id}"
+    puts "[#{@line_count}] Success line. Wafer##{wafer.id } #{wafer.name}"
   end
 end
 
+# TODO:
 # есть идея собирать все строки в разные файлы, сгруппиров по пластинам и программам.
 # после того как файл исхоник был обработан. мы добавляем неповтоярбщиеся строки в файл с программой.
 # прописывать бы еще номер строки и файл от куда он был
