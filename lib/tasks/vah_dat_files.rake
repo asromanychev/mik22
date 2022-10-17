@@ -1,15 +1,15 @@
-namespace :vah_nor_files do
-  desc "Upload Norm files"
+namespace :vah_dat_files do
+  desc "Upload Dat files"
   task upload: :environment do
     folder_path = ENV['TARGET']
 
     if folder_path.nil?
-      puts "ERORR!!!!usage: bundle exec rake vah_nor_files:upload TARGET=/path/to/files_folder которые содержат nor-файлы"
+      puts "ERORR!!!!usage: bundle exec rake vah_dat_files:upload TARGET=/path/to/files_folder которые содержат dat-файлы"
       next
     end
 
     Dir.glob("#{folder_path}/**/*.*") do |file_path|
-      UploadVahNorFileService.new(file_path).perform
+      UploadVahDatFileService.new(file_path).perform
       MatchVahMetsAndNormService.new.perform
     end
   end

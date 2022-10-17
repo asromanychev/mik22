@@ -6,6 +6,6 @@ class VahMetSite < ApplicationRecord
   belongs_to :vah_met
 
   def rebuild_check_sum
-    self.check_sum = "#{self.frags_values.keys.count}_#{arr = []; self.frags_values.each_pair{|k, v| arr << v.count }; arr.join("_")}"
+    self.check_sum = "#{self.frags_values.keys.count}_#{arr = []; self.frags_values.each_pair{|_, v| arr << v.count }; arr.join("_")}"
   end
 end

@@ -24,14 +24,10 @@ class UploadVahDatFileService
     @path = path
     @vah_import_dat = VahImport::Dat.find_by(path: path) || VahImport::Dat.create!(path: path, started_at: Time.now)
     @line_count = 0
-  rescue ActiveRecord::RecordInvalid => e
-    puts e
-    exist_vah_import_dat = VahImport::Dat.find_by(path: path)
-    puts "Такой файл уже занесен в VahImport::Dat with id = #{exist_vah_import_dat.id}"
   end
 
   def perform
-    puts "Start new Import from #{path} VahImport::Dat with id = #{@vah_import_dat.id}"
+    puts "Start new Import from #{path} VahImport::Dat with id = #{vah_import_dat.id}"
     file = File.open(path)
     #  1. проверить что файл валидный
     #  2. собрать все ошибки

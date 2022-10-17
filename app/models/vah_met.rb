@@ -8,6 +8,8 @@ class VahMet < ApplicationRecord
 
   has_many :vah_met_sites, dependent: :destroy
 
+  scope :not_matched, -> { where(norm_id: nil) }
+
   def complite_datetime
     self.update(datetime: DateTime.parse("#{self.met_date} #{self.met_time} +3"))
   end

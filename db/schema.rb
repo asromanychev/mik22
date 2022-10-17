@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_16_120113) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_17_085033) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -187,6 +187,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_120113) do
     t.string "met_date"
     t.string "met_time"
     t.string "norm_name"
+    t.boolean "sites_check_sums_count_error", default: false
     t.index ["vah_norm_id"], name: "index_vah_mets_on_vah_norm_id"
     t.index ["wafer_id", "datetime", "device"], name: "index_vah_mets_on_wafer_id_and_datetime_and_device", unique: true
     t.index ["wafer_id"], name: "index_vah_mets_on_wafer_id"
@@ -198,9 +199,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_120113) do
     t.integer "check_md5", null: false
     t.tsrange "range_date"
     t.datetime "start_time"
-    t.integer "sites_count", null: false
-    t.integer "frags_count", null: false
-    t.integer "params_count", null: false
+    t.integer "sites_count", default: 0, null: false
+    t.integer "frags_count", default: 0, null: false
+    t.integer "params_count", default: 0, null: false
     t.jsonb "frags_params", default: {}, null: false
     t.string "check_sum", null: false
     t.datetime "created_at", null: false
