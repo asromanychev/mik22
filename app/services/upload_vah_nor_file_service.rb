@@ -26,7 +26,7 @@ class UploadVahNorFileService
     return unless file.present?
 
     #по названию пути /home/anri/Загрузки/test_mik22/norm/2022-07-14/16_31_04 вытаскиваем его start_time
-    @start_time = DateTime.parse(path.split('/').last(2).to_s.gsub('_', ':'))
+    @start_time = DateTime.parse(File.dirname(path).split('/').last(2).to_s.gsub('_', ':'))
     return unless @start_time
 
     file.each do |line|
@@ -44,9 +44,6 @@ class UploadVahNorFileService
   def init_vah_norm(line)
     name = match_w_program(line)[1].upcase if @line_count == 1 && match_w_program(line)
     @vah_norm = VahNorm.find_or_create_by!(name: name, is_nors: false, start_time: @start_time) if name
-
-    # надо найти еще такие если есть и выставить им нужные range_date
-
 
     sites_count = match_w_numtq(line)[1].upcase if @line_count == 2 && match_w_numtq(line)
     @vah_norm.update(sites_count: sites_count) if sites_count
@@ -84,12 +81,11 @@ class UploadVahNorFileService
       return if vah_norm.frags_params[frag].include?(norm_param)
 
       vah_norm.frags_params[frag] << norm_param
-      binding.pry
       vah_norm.save
-      binding.pry
-
       puts "[param ##{@param_count}] Success"
     end
+  rescue => e
+    # создаем ошибку о дубле. Записываем куда-то чтобы потом можно было посмотреть и сравнить два эти файла.
   end
 
   # 1-ая строчка - проверка на соответсвие название программы и в строке

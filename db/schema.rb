@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_17_085033) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_18_054709) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -196,7 +196,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_085033) do
   create_table "vah_norms", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "is_nors", default: false
-    t.integer "check_md5", null: false
+    t.string "check_md5", null: false
     t.tsrange "range_date"
     t.datetime "start_time"
     t.integer "sites_count", default: 0, null: false
