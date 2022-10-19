@@ -8,7 +8,7 @@ namespace :vah_dat_files do
       next
     end
 
-    Dir.glob("#{folder_path}/**/*.*") do |file_path|
+    Dir.glob("#{folder_path}/**/*.[Dd][Aa][Tt]") do |file_path|
       UploadVahDatFileService.new(file_path).perform
       MatchVahMetsAndNormService.new.perform
     end
