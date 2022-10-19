@@ -13,6 +13,12 @@ class VahNorm < ApplicationRecord
     where("range_date @> tsrange(:start, :end)", start: datetime - 1.second, end: datetime + 1.second)
   }
 
+  private
+  def copies
+    # находим точно такие же копии норм файла. Полное совпадение по md5 и по ТЯ и Названию
+    VahNorm.where(check_md5: check_md5, name: name, sites_count: sites_count)
+  end
+
   def calculate_range_date
     covered_version =
       VahNorm.where(name: self.name).where.not(range_date: nil)

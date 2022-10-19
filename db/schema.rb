@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_18_054709) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_19_101155) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -206,7 +206,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_054709) do
     t.string "check_sum", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name", "is_nors", "check_md5"], name: "index_vah_norms_on_name_and_is_nors_and_check_md5", unique: true
+    t.index ["name", "check_md5"], name: "index_vah_norms_on_name_and_check_md5"
   end
 
   create_table "wafers", force: :cascade do |t|
