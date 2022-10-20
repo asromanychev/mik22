@@ -25,7 +25,7 @@ class VahNorm < ApplicationRecord
              .find { |norm| norm.range_date.cover?(self.start_time) }
     if covered_version.nil?
       # первый норм тут
-      self.update(range_date: (DateTime.parse("13.12.2012 00:00 +3")..DateTime.parse("13.12.2112 00:00 +3")))
+      self.update(range_date: ("13.12.2012 22:00".in_time_zone('Moscow').."13.12.2112 22:00".in_time_zone('Moscow')))
     else
       # нарезаем range_date
       range_date_to_a = [covered_version.range_date.first, covered_version.range_date.last]

@@ -85,7 +85,7 @@ class UploadVahDatFileService
     site.line_numbers << @line_count
 
     site.save
-    puts "[#{@line_count}] Success line. Wafer##{wafer.id } #{wafer.name}"
+    puts "[#{@line_count}] Success line. Wafer##{wafer.id } #{wafer.name}, met time: #{met.met_date} #{met.met_time}"
   end
 end
 

@@ -26,7 +26,7 @@ class UploadVahNorFileService
     return unless file.present?
 
     #по названию пути /home/anri/Загрузки/test_mik22/norm/2022-07-14/16_31_04 вытаскиваем его start_time
-    @start_time = DateTime.parse(File.dirname(path).split('/').last(2).to_s.gsub('_', ':'))
+    @start_time = File.dirname(path).split('/').last(2).to_s.gsub('_', ':').in_time_zone('Moscow')
     return unless @start_time
 
     file.each do |line|

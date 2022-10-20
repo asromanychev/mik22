@@ -6,7 +6,7 @@ class MatchVahMetsAndNormService
       sites_check_sums = met.vah_met_sites.pluck(:check_sum).uniq
       puts "Uniq check_sums for VahMet##{met.id} (#{met.wafer.name}) are #{sites_check_sums}"
 
-      return met.update(sites_check_sums_count_error: true) if sites_check_sums != 1
+      return met.update(sites_check_sums_count_error: true) if sites_check_sums.count != 1
       match_with_norm(met, sites_check_sums.last)
     end
   end
@@ -32,6 +32,6 @@ class MatchVahMetsAndNormService
     norm = norms.cover(datetime).last
     puts "Norm for VahMet##{met.id} > 1. Takes" if norms.count > 1
 
-    met.update(vah_norm: norm)
+    met.update(vah_norm: norm, sites_check_sums_count_error: false)
   end
 end

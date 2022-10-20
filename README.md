@@ -54,3 +54,16 @@ rails s
 - Загрузка фотографий (mightmagic, lightbox2)
 - Хранение фотографий в Yandex Cloud
 - Аутентификация (Devise)
+
+#### Шпаргалка:
+
+*В консоли:*
+Посмотреть сопоставление Измерений и Норм
+```
+VahMet.unscoped.includes(:vah_norm).pluck(:id, :norm_name, :datetime, 'vah_norms.name', 'vah_norms.start_time', 'vah_norms.range_date')
+```
+
+Проверить check_sum у измерения
+```
+VahMet.find(707).vah_met_sites.pluck(:check_sum).uniq
+```
