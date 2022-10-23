@@ -462,6 +462,13 @@ GEM
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    slim (4.1.0)
+      temple (>= 0.7.6, < 0.9)
+      tilt (>= 2.0.6, < 2.1)
+    slim-rails (3.5.1)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      slim (>= 3.0, < 5.0)
     smart_kv (0.2.8.1)
     snaky_hash (2.0.1)
       hashie
@@ -479,6 +486,7 @@ GEM
     stimulus-rails (1.1.0)
       railties (>= 6.0.0)
     strscan (3.0.4)
+    temple (0.8.2)
     terser (1.1.12)
       execjs (>= 0.3.0, < 3)
     thor (1.2.1)
@@ -578,6 +586,7 @@ DEPENDENCIES
   shoulda-matchers
   sidekiq (~> 6.3)
   simple_form (~> 5.1.0)
+  slim-rails
   sprockets-rails
   stimulus-rails
   terser (~> 1.1)

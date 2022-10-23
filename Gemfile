@@ -91,6 +91,7 @@ gem "sentry-rails"
 gem "sentry-sidekiq"
 
 gem "loaf", "~> 0.10.0"
+gem 'slim-rails'
 
 group :development do
   gem "web-console"
