@@ -1,0 +1,35 @@
+section.section
+  .row
+    .col-lg-12
+      .card
+        .card-body
+          .table-responsive
+            table#meter-vah-metering-table.table.table-sm.table-striped.table-bordered
+              thead
+                tr
+                  th scope="col"
+                    input#select-wafers.form-check-input type="checkbox" /
+                  th scope="col" = link_to "Наименование пластины", :sort => "name"
+                  th scope="col" = link_to "Программа", :sort => "program"
+                  th scope="col" = link_to "Партия", :sort => "lot"
+                  th scope="col" = link_to "Номер пакета", :sort => "lot_packet"
+                  th scope="col" = link_to "Номер партии", :sort => "lot_order"
+                  th scope="col" = link_to "Номер пластины", :sort => "number"
+                  th scope="col" = link_to "Дата", :sort => "date"
+                  th scope="col" = link_to "Оператор", :sort => "operator"
+                  th scope="col" = link_to "Установка", :sort => "device"
+                  th scope="col"  Параметр
+              tbody
+                - @vah_mets.each do |met|
+                  tr
+                    th scope="row"
+                      input.form-check-input name="wafer_id[]" type="checkbox" value="#{met.id}" /
+                    td = met.wafer.product
+                    td = met.norm_name
+                    td = met.wafer.lot
+                    td = met.wafer.lot_packet
+                    td = met.wafer.lot_order
+                    td = met.wafer.number
+                    td = "#{met.met_date} #{met.met_time}"
+                    td = met.operator
+                    td = met.device

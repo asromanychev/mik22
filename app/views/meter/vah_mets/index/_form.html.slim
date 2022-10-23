@@ -1,0 +1,70 @@
+.card
+  .card-body
+    h5.card-title Поиск измерений
+    /! Horizontal Form
+    form
+      .row.mb-3
+        .col-sm-12
+          input.form-control.form-control-sm placeholder=("Поиск по тексту") type="text" /
+      .row.mb-3
+        .col-sm-4
+          input.form-control.form-control-sm type="date" /
+        .col-sm-4
+          input.form-control.form-control-sm type="date" /
+        .col-sm-4
+          .form-check.form-switch
+            input#flexSwitchCheckDefault.form-check-input.form-check-input-sm type="checkbox" /
+            label.form-check-label.form-check-label-sm for="flexSwitchCheckDefault"  Не учитывать даты
+      .row.mb-3
+        .col-sm-4
+          select.form-select.form-select-sm aria-label=("Default select example")
+            option selected=""  Выберите изделие
+            option value="1"  M248
+            option value="2"  M269
+            option value="3"  M705
+        .col-sm-4
+          select.form-select.form-select-sm aria-label=("Default select example")
+            option selected=""  Выберите программу
+            option value="1"  M248
+            option value="2"  M269
+            option value="3"  M705
+        .col-sm-4
+          select.form-select.form-select-sm aria-label=("Default select example")
+            option selected=""  Выберите параметр
+            option value="1"  One
+            option value="2"  Two
+            option value="3"  Three
+      .row.mb-3
+        .col-sm-4
+          select.form-select.form-select-sm aria-label=("multiple select example") multiple="" size="10"
+            option selected=""  Выберите пакеты
+            option value="21"  21
+            option value="22"  22
+            option value="23"  23
+            option value="24"  24
+            option value="25"  25
+            option value="26"  26
+        .col-sm-4
+          select.form-select.form-select-sm aria-label=("multiple select example") multiple="" size="10"
+            option selected=""  Выберите партии
+            option value="10"  10
+            option value="11"  11
+            option value="12"  12
+            option value="13"  13
+            option value="14"  14
+            option value="15"  15
+        .col-sm-4
+          select.form-select.form-select-sm aria-label=("multiple select example") multiple="" size="10"
+            option selected=""  Выберите пластины
+            option value="1"  1
+            option value="2"  2
+            option value="3"  3
+            option value="4"  4
+            option value="5"  5
+            option value="6"  6
+            option value="7"  7
+            option value="8"  8
+      .modal-footer
+        button.btn.btn-primary type="button"  Найти
+      .row.mb-3
+        /! End Horizontal Form

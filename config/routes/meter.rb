@@ -1,7 +1,8 @@
 namespace :meter do
   root 'dashboard#show'
-  get 'vah/meterings'
-  get 'vah/dashboard'
+  get 'vah_mets/index'
+  get 'vah_mets/dashboard'
+
   get 'components/alert'
   get "components/tabs"
   get 'tables/general'
