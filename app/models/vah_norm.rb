@@ -13,6 +13,10 @@ class VahNorm < ApplicationRecord
     where("range_date @> tsrange(:start, :end)", start: datetime - 1.second, end: datetime + 1.second)
   }
 
+  def param_names
+    self.frags_params.values.flatten(1).map(&:second)
+  end
+
   private
   def copies
     # находим точно такие же копии норм файла. Полное совпадение по md5 и по ТЯ и Названию
