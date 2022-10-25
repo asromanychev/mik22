@@ -4,5 +4,5 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import VahMetSearchController from "./vah_met_search_controller"
+application.register("vah_met_search", VahMetSearchController)

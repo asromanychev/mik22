@@ -2,37 +2,37 @@
   .card-body
     h5.card-title Поиск измерений
 
-    = form_with url: "/search", method: :get do |form|
+    = form_with url: "/search", method: :get, html: { data: { controller: 'vah_met_search' } } do |form|
       form
         .row.mb-3
           .col-sm-12
             = form.text_field :vah_met_query, class: 'form-control form-control-sm', placeholder: "Поиск по тексту"
         .row.mb-3
           .col-sm-4
-            = form.date_field :from_date,  class: 'form-control form-control-sm'
-          .col-sm-4
-            = form.date_field :to_date,  class: 'form-control form-control-sm'
-          .col-sm-4
             .form-check.form-switch
-              = form.check_box :without_date, class: 'form-check-input form-check-input-sm'
-              = form.label :without_date, 'Не учитывать даты', class: 'form-check-label form-check-label-sm'
+              = form.check_box :use_date_interval, class: 'form-check-input form-check-input-sm', data: {'action': 'click->vah_met_search#toggleDates'}
+              = form.label :use_date_interval, 'Учитывать даты', class: 'form-check-label form-check-label-sm'
+          .col-sm-4.vah-met-search-dates
+            = form.date_field :from_date, class: 'form-control form-control-sm collapse'
+          .col-sm-4.vah-met-search-dates
+            = form.date_field :to_date, class: 'form-control form-control-sm collapse'
         .row.mb-3
           .col-sm-4
             = form.select :city, Wafer.pluck(:product).uniq, { :prompt => "Выберите изделие" }, { class: "form-select form-select-sm", "aria-label" => ("Default select example") }
 
           .col-sm-4
-            = form.select :city, VahNorm.pluck(:name).uniq, { :prompt => "Выберите программу" }, { class: "form-select form-select-sm", "aria-label" => ("Default select example") }
+            = form.select :city, VahNorm.pluck(:name).uniq, { :prompt => "Выберите программу" }, { class: "form-select form-select-sm collapse", "aria-label" => ("Default select example") }
 
           .col-sm-4
-            = form.select :city, VahNorm.last.param_names, { :prompt => "Выберите параметр" }, { class: "form-select form-select-sm", "aria-label" => ("Default select example") }
+            = form.select :city, VahNorm.last.param_names, { :prompt => "Выберите параметр" }, { class: "form-select form-select-sm collapse", "aria-label" => ("Default select example") }
         .row.mb-3
           .col-sm-4
-            = form.select :city, Wafer.pluck(:lot_packet).uniq.sort, { :prompt => "Выберите пакеты" }, { :multiple => true, :size => 10, class: "form-select form-select-sm", "aria-label" => "multiple select example" }
+            = form.select :city, Wafer.pluck(:lot_packet).uniq.sort, { :prompt => "Выберите пакеты" }, { :multiple => true, :size => 10, class: "form-select form-select-sm collapse", "aria-label" => "multiple select example" }
           .col-sm-4
-            = form.select :city, Wafer.pluck(:lot_order).uniq.sort, { :prompt => "Выберите партии" }, { :multiple => true, :size => 10, class: "form-select form-select-sm", "aria-label" => "multiple select example" }
+            = form.select :city, Wafer.pluck(:lot_order).uniq.sort, { :prompt => "Выберите партии" }, { :multiple => true, :size => 10, class: "form-select form-select-sm collapse", "aria-label" => "multiple select example" }
 
           .col-sm-4
-            = form.select :city, Wafer.pluck(:number).uniq.sort, { :prompt => "Выберите пластины" }, { :multiple => true, :size => 10, class: "form-select form-select-sm", "aria-label" => "multiple select example" }
+            = form.select :city, Wafer.pluck(:number).uniq.sort, { :prompt => "Выберите пластины" }, { :multiple => true, :size => 10, class: "form-select form-select-sm collapse", "aria-label" => "multiple select example" }
 
         .row.mb-3
           .col-sm-4
