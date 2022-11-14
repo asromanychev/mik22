@@ -6,12 +6,29 @@ class Meter::VahMetsController < MeterController
   end
 
   def search
-    # план на 12.11.22
-    # 1. генерировать запрос по params
+    # план на 14.11.22
     # 2. если session есть то значит показывать поля поиска
     # 3. сделать кнопку сброса сессии
     # 4. научится сохранять выбранные даты календаря в сессии
-    @vah_mets = VahMet.last(5)
+    mets = VahMet.joins(:wafer)
+    # use_date_interval from_date to_date
+    from_date = DateTime.parse(params[:from_date]).beginning_of_day if params[:from_date].present?
+    to_date = DateTime.parse(params[:to_date]).end_of_day if params[:to_date].present?
+    from_date ||= DateTime.parse('12-12-2012').beginning_of_day
+    to_date ||= DateTime.parse('12-12-2112').end_of_day
+    mets = mets.where('datetime BETWEEN ? AND ?', from_date.beginning_of_day, to_date.end_of_day) if params[:use_date_interval].present?
+    # product_name
+    mets = mets.where('wafers.product = ?', params[:product_name] ) if params[:product_name].present?
+    # program_name
+    mets = mets.where(norm_name: params[:program_name] ) if params[:program_name].present?
+    # parameter_name - тут пока отдельная история
+    # lot_packet
+    mets = mets.where('wafers.lot_packet IN (?)', params[:lot_packet].reject(&:empty?)) if params[:lot_packet].present?
+    # lot_order
+    mets = mets.where('wafers.lot_order IN (?)', params[:lot_order].reject(&:empty?)) if params[:lot_order].present?
+    # wafer_number
+    mets = mets.where('wafers.number IN (?)', params[:wafer_number].reject(&:empty?)) if params[:wafer_number].present?
+    @vah_mets = mets
   end
 
   private
