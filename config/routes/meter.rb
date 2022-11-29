@@ -1,6 +1,7 @@
 namespace :meter do
   root 'dashboard#show'
   get 'vah_mets/index'
+  get 'vah_mets/reset_search'
   get 'vah_mets/dashboard'
   post 'vah_mets/search'
 

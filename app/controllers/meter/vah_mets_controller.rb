@@ -5,6 +5,12 @@ class Meter::VahMetsController < MeterController
     @vah_mets = VahMet.all
   end
 
+  def reset_search
+    reset_search_session
+    @vah_mets = []
+    render :index
+  end
+
   def search
     # план на 14.11.22
     # 2. если session есть то значит показывать поля поиска
@@ -41,7 +47,6 @@ class Meter::VahMetsController < MeterController
   end
 
   def update_search_session
-    # binding.pry
     session[:vah_met_query] = search_params[:vah_met_query]
     session[:use_date_interval] = search_params[:use_date_interval]
     session[:from_date] = search_params[:from_date]
@@ -55,15 +60,15 @@ class Meter::VahMetsController < MeterController
   end
 
   def reset_search_session
-    session[:vah_met_query] = ''
-    session[:use_date_interval] = ''
-    session[:from_date] = ''
-    session[:to_date] = ''
-    session[:product_name] = ''
-    session[:program_name] = ''
-    session[:parameter_name] = ''
-    session[:lot_packet] = ''
-    session[:lot_order] = ''
-    session[:wafer_number] = ''
+    session[:vah_met_query] = nil
+    session[:use_date_interval] = nil
+    session[:from_date] = Date.today.at_beginning_of_month.strftime('%Y-%m-%d')
+    session[:to_date] = Date.today.strftime('%Y-%m-%d')
+    session[:product_name] = nil
+    session[:program_name] = nil
+    session[:parameter_name] = nil
+    session[:lot_packet] = nil
+    session[:lot_order] = nil
+    session[:wafer_number] = nil
   end
 end

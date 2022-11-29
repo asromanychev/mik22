@@ -1,20 +1,31 @@
 .card
   .card-body
     h5.card-title Поиск измерений
-    = form_with url: meter_vah_mets_search_path, method: :post, html: { data: { controller: 'vah_met_search', turbo: 'false' } } do |form|
+    = form_with url: meter_vah_mets_search_path,
+            method: :post,
+            html: { data: { controller: 'vah_met_search', turbo: 'false' } } do |form|
       form
         .row.mb-3
           .col-sm-12
-            = form.text_field :vah_met_query, class: 'form-control form-control-sm', placeholder: "Поиск по тексту"
+            = form.text_field :vah_met_query,
+                    value: session[:vah_met_query],
+                    class: 'form-control form-control-sm',
+                    placeholder: "Поиск по тексту"
         .row.mb-3
           .col-sm-4
             .form-check.form-switch
-              = form.check_box :use_date_interval, class: 'form-check-input form-check-input-sm', selected: session[:use_date_interval],  data: {'action': 'click->vah_met_search#toggleDates'}
+              = form.check_box :use_date_interval,
+                      class: 'form-check-input form-check-input-sm',
+                      checked: session[:use_date_interval] == "1"
               = form.label :use_date_interval, 'Учитывать даты', class: 'form-check-label form-check-label-sm'
           .col-sm-4.vah-met-search-dates
-            = form.date_field :from_date, class: 'form-control form-control-sm collapse'
+            = form.date_field :from_date,
+                    class: "form-control form-control-sm",
+                    value: session[:from_date] || Date.today.at_beginning_of_month.strftime('%Y-%m-%d')
           .col-sm-4.vah-met-search-dates
-            = form.date_field :to_date, class: 'form-control form-control-sm collapse'
+            = form.date_field :to_date,
+                    class: 'form-control form-control-sm',
+                    value: session[:to_date] || Date.today.strftime('%Y-%m-%d')
         .row.mb-3
           .col-sm-4.vah-met-product-name
             = form.select :product_name, Wafer.pluck(:product).uniq,
@@ -24,13 +35,13 @@
           .col-sm-4.vah-met-program-name
             = form.select :program_name, VahNorm.pluck(:name).uniq,
                     { :prompt => "Выберите программу", selected: session[:program_name] },
-                    { class: "form-select form-select-sm collapse", "aria-label" => ("Default select example"),
+                    { class: "form-select form-select-sm", "aria-label" => ("Default select example"),
                             data: {'action': 'change->vah_met_search#openOtherSelects'} }
 
           .col-sm-4.vah-met-parameter-name
             = form.select :parameter_name, VahNorm.last.param_names,
                     { :prompt => "Выберите параметр", selected: session[:parameter_name] },
-                    { class: "form-select form-select-sm collapse", "aria-label" => ("Default select example"),
+                    { class: "form-select form-select-sm", "aria-label" => ("Default select example"),
                             data: {'action': 'change->vah_met_search#openLotPacketSelect'} }
         .row.mb-3
           .col-sm-4
@@ -38,21 +49,23 @@
                     { :prompt => "Выберите пакеты", selected: session[:lot_packet] },
                     { multiple: true,
                             size: 10,
-                            class: "vah-met-lot-packet form-select form-select-sm collapse", "aria-label" => "multiple select example",
+                            class: "vah-met-lot-packet form-select form-select-sm", "aria-label" => "multiple select example",
                             data: {'action': 'change->vah_met_search#openLotOrderSelect'} }
           .col-sm-4
             = form.select :lot_order, Wafer.pluck(:lot_order).uniq.sort,
                     { :prompt => "Выберите партии", selected: session[:lot_order] },
                     { multiple: true,
                             size: 10,
-                            class: "vah-met-lot-order form-select form-select-sm collapse", "aria-label" => "multiple select example",
+                            class: "vah-met-lot-order form-select form-select-sm", "aria-label" => "multiple select example",
                             data: {'action': 'change->vah_met_search#openWaferNumberSelect'} }
           .col-sm-4
             = form.select :wafer_number, Wafer.pluck(:number).uniq.sort,
                     { :prompt => "Выберите пластины", selected: session[:wafer_number] },
                     { :multiple => true,
                             size: 10,
-                            class: "vah-met-wafer-number form-select form-select-sm collapse", "aria-label" => "multiple select example" }
+                            class: "vah-met-wafer-number form-select form-select-sm", "aria-label" => "multiple select example" }
         .row.mb-3
-          .col-sm-4
-            = form.submit('Найти', class: 'btn btn-primary')
+          form-group
+            .col-sm-4
+              = form.submit('Найти', class: 'btn btn-primary m-1')
+              = link_to_reset_search

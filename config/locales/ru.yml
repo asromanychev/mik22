@@ -44,7 +44,7 @@ ru:
   devise:
     log_in: 'Войти'
     sign_up: 'Зарегистрироваться'
-    characters_minimum: 
+    characters_minimum:
       one: Минимум %{count} символ
       few: Минимум %{count} символа
       many: Минимум %{count} символов
@@ -212,4 +212,8 @@ ru:
       subject: 'Новая фотография @%{event}'
       title: 'Новая фотография'
       author: 'Автор'
-      event: 'Событие'
+  meter:
+    vah_mets:
+      index:
+        form:
+          reset_search: Сбросить поиск
