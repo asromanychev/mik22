@@ -12,10 +12,9 @@ class Meter::VahMetsController < MeterController
   end
 
   def search
-    # план на 14.11.22
-    # 2. если session есть то значит показывать поля поиска
-    # 3. сделать кнопку сброса сессии
-    # 4. научится сохранять выбранные даты календаря в сессии
+    # план на 30.11.22
+    # 1. Выводить выборку по поиску
+    # 2. Выводить значение параметра в выборке
     mets = VahMet.joins(:wafer)
     # use_date_interval from_date to_date
     from_date = DateTime.parse(params[:from_date]).beginning_of_day if params[:from_date].present?
