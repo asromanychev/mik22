@@ -4,13 +4,6 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum; this matches the default thread size of Active Record.
 
-# Получаем абсолютный путь к текущей директории файла конфигурации
-current_directory = File.expand_path(__dir__)
-# Построение абсолютного пути к папке public вашего приложения
-public_directory = File.join(current_directory, '../public')
-# Установка пути для обслуживания статических ассетов
-directory public_directory
-
 max_threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
 min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { max_threads_count }
 threads min_threads_count, max_threads_count
