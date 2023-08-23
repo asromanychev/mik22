@@ -79,4 +79,5 @@ Rails.application.configure do
     password: Rails.application.credentials.dig(:gmail, :password),
     authentication: 'plain'
   }
+  config.hosts << "miklab"
 end

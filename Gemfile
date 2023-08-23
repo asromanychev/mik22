@@ -122,7 +122,7 @@ group :test do
   gem 'shoulda-matchers'
   gem "capybara"
   gem "selenium-webdriver"
-  gem "webdrivers"
+  gem "webdrivers", "= 5.3.0"
 end
 
 gem "faker", "~> 2.23"

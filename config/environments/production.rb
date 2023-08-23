@@ -102,4 +102,5 @@ Rails.application.configure do
     user_name: Rails.application.credentials.dig(:yandex_mail, :user_mail),
     password: Rails.application.credentials.dig(:yandex_mail, :password)
   }
+  config.hosts << "miklab"
 end
