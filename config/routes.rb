@@ -6,8 +6,8 @@ Rails.application.routes.draw do
       get 'list'
     end
   end
-  # meter ####
-  draw(:meter)
+  # dat ####
+  draw(:data)
 
   ############
   mount RailsAdmin::Engine => '/rails_admin', as: 'rails_admin'
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
-  root "events#index"
+  root 'data/dashboard#show'
 
   resources :events do
     resources :comments, only: [:create, :destroy]

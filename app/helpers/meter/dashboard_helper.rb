@@ -1,2 +1,0 @@
-module Meter::DashboardHelper
-end

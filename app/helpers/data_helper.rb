@@ -1,6 +1,6 @@
-module MeterHelper
+module DataHelper
   def vah?
-    request.original_fullpath.start_with?("/meter/vah")
+    request.original_fullpath.start_with?("/data/vah")
   end
 
   def components?

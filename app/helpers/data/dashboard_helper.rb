@@ -1,0 +1,2 @@
+module Data::DashboardHelper
+end

@@ -1,4 +1,4 @@
-namespace :meter do
+namespace :data do
   root 'dashboard#show'
   get 'vah_mets/index'
   get 'vah_mets/reset_search'

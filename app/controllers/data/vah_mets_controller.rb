@@ -1,4 +1,4 @@
-class Meter::VahMetsController < MeterController
+class Data::VahMetsController < DataController
 
   before_action :update_search_session, only: :search
   def index

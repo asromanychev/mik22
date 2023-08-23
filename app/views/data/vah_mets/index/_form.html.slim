@@ -1,7 +1,7 @@
 .card
   .card-body
     h5.card-title Поиск измерений
-    = form_with url: meter_vah_mets_search_path,
+    = form_with url: data_vah_mets_search_path,
             method: :post,
             html: { data: { controller: 'vah_met_search', turbo: 'false' } } do |form|
       form
@@ -38,11 +38,11 @@
                     { class: "form-select form-select-sm", "aria-label" => ("Default select example"),
                             data: {'action': 'change->vah_met_search#openOtherSelects'} }
 
-          .col-sm-4.vah-met-parameter-name
-            = form.select :parameter_name, VahNorm.last.param_names,
-                    { :prompt => "Выберите параметр", selected: session[:parameter_name] },
-                    { class: "form-select form-select-sm", "aria-label" => ("Default select example"),
-                            data: {'action': 'change->vah_met_search#openLotPacketSelect'} }
+          / .col-sm-4.vah-met-parameter-name
+          /   = form.select :parameter_name, VahNorm.last.param_names,
+          /           { :prompt => "Выберите параметр", selected: session[:parameter_name] },
+          /           { class: "form-select form-select-sm", "aria-label" => ("Default select example"),
+          /                   data: {'action': 'change->vah_met_search#openLotPacketSelect'} }
         .row.mb-3
           .col-sm-4
             = form.select :lot_packet, Wafer.pluck(:lot_packet).uniq.sort,

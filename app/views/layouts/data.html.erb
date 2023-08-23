@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= favicon_link_tag "meter/favicon.png" %>
+    <%= favicon_link_tag "data/favicon.png" %>
     <%= display_meta_tags site: ENV["website_title"] %>
 
     <!-- Google Fonts -->
@@ -33,14 +33,14 @@
   </head>
 
   <body>
-    <%= render "layouts/meter/header" %>
-    <%= render "layouts/meter/sidebar" %>
-    <%= render "layouts/meter/breadcrumb" %>
+    <%= render "layouts/data/header" %>
+    <%= render "layouts/data/sidebar" %>
+    <%= render "layouts/data/breadcrumb" %>
     <main id="main" class="main">
       <%= bootstrap_flash_messages %>
-      <%= render "layouts/meter/breadcrumb" %>
+      <%= render "layouts/data/breadcrumb" %>
       <%= yield %>
     </main>
-    <%= render "layouts/meter/footer" %>
+    <%= render "layouts/data/footer" %>
   </body>
 </html>

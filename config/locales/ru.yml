@@ -212,7 +212,7 @@ ru:
       subject: 'Новая фотография @%{event}'
       title: 'Новая фотография'
       author: 'Автор'
-  meter:
+  data:
     vah_mets:
       index:
         form:

@@ -72,8 +72,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_101155) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.string "pincode"
-    t.float "latitude"
-    t.float "longitude"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
