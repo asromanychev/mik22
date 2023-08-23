@@ -83,5 +83,3 @@ test:
 production:
   <<: *default
   database: bbq2_production
-  username: deploy
-  password: <%= ENV["BBQ2_DATABASE_PASSWORD"] %>
